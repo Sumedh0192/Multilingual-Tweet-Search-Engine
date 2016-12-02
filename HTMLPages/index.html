@@ -73,7 +73,18 @@
                         <h1>
 							Tweet Engine
 							<hr class="small">
-							<input type="text" class="form-control" placeholder="Search" id="name" required="" data-validation-required-message="Please search your Query" aria-invalid="false">
+							<div id="custom-search-input">
+								<div class="input-group col-md-12">
+									<input type="text" class="form-control input-lg" placeholder="Search">
+									<span class="input-group-btn">
+										<button class="btn btn-info btn-lg" type="button">
+											<i class="glyphicon glyphicon-search"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+							<!-- <input type="text" class="form-control" placeholder="Search" id="name" required="" data-validation-required-message="Please search your Query" aria-invalid="false">
+							-->
 						</h1>
                         
                         <!--<span class="subheading">A Clean Blog Theme by Start Bootstrap</span>-->
@@ -89,59 +100,59 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Ingest tweets on a particular hashtag in multiple languages, search or streaming 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
                 </div>
                 <hr>
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Determine ways to extract cross-lingual or semantic equivalences and index data as such 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
                 </div>
                 <hr>
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Perform search across languages for a given query 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
                 </div>
                 <hr>
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             End goal : Serve relevant content to a user irrespective of the language of the tweet 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
                 </div>
 				<div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Grading : Relevancy and language spread of served results
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
                 </div>
@@ -149,7 +160,7 @@
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
-                        <a href="#">More Matches &rarr;</a>
+                        <a href="#" onclick="httpGet('http://54.191.219.232:8983/solr/train_demo/select?df=text_en&fl=id,%20score&indent=on&q=Syria&wt=json&json.wrf=callback=getJSON');">More Matches &rarr;</a>
                     </li>
                 </ul>
             </div>
@@ -199,6 +210,8 @@
     <!-- jQuery -->
     <script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/vendor/jquery/jquery.min.js"></script>
 
+	<script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/vendor/jquery/jquery.js"></script>
+	
     <!-- Bootstrap Core JavaScript -->
     <script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/bootstrap/js/bootstrap.min.js"></script>
 
@@ -213,6 +226,103 @@
 		.textcolor{
 		}
 	</style>
+	<script>
+		var j$ = jQuery.noConflict();
+		function httpGet(url){
+			$.ajax({
+				url: url,
+				jsonpCallback : 'getJSON',
+				jsonp: "$jsonp",
+				dataType: "jsonp",
+				type: "GET",
+				crossDomain: true,
+				error: function (xhr, status) {
+					alert("error");
+				}
+			}).done(function(data) {
+				console.log("Request received: " + data.response.docs[0].id);
+			});
+		}
+	
+	
+	
+		function xmlhttpPost(strURL) {
+			var xmlHttpReq = false;
+			var self = this;
+			if (window.XMLHttpRequest) { // Mozilla/Safari
+				self.xmlHttpReq = new XMLHttpRequest();
+			}
+			else if (window.ActiveXObject) { // IE
+				self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			self.xmlHttpReq.open('POST', strURL, true);
+			self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			self.xmlHttpReq.onreadystatechange = function() {
+				if (self.xmlHttpReq.readyState == 4) {
+					updatepage(self.xmlHttpReq.responseText);
+				}
+			}
+			/*
+			var params = getstandardargs().concat(getquerystring());
+			var strData = params.join('&');
+			self.xmlHttpReq.send(strData);
+			*/
+		}
+
+		function getstandardargs() {
+			var params = [
+				'wt=json'
+				, 'indent=on'
+				, 'hl=true'
+				, 'hl.fl=name,features'
+				];
+
+			return params;
+		}
+		function getquerystring() {
+			var form = document.forms['f1'];
+			var query = form.query.value;
+			qstr = 'q=' + escape(query);
+			return qstr;
+		}
+
+		// this function does all the work of parsing the solr response and updating the page.
+		function updatepage(str){
+			//document.getElementById("raw").innerHTML = str;
+			var rsp = eval("("+str+")"); // use eval to parse Solr's JSON response
+			
+			console.log("####" + rsp.response.docs[0]);
+			/*
+			var html= "<br>numFound=" + rsp.response.numFound;
+			var first = rsp.response.docs[0];
+			html += "<br>product name="+ first.name;
+			var hl=rsp.highlighting[first.id];
+			if (hl.name != null) { html += "<br>name highlighted: " + hl.name[0]; }
+			if (hl.features != null) { html += "<br>features highligted: " + hl.features[0]; }
+			document.getElementById("result").innerHTML = html;
+			*/
+		}
+		/*
+		function httpGet(url){
+			$.ajax({
+				url: url,
+				type: "POST",
+				crossDomain: true,
+				data: JSON.stringify(somejson),
+				dataType: "jsonnp",
+				success: function (response) {
+					var resp = JSON.parse(response)
+					alert(resp.status);
+				},
+				error: function (xhr, status) {
+					alert("error");
+				}
+			});
+			//var json = j$.getJSON(url);
+			//console.log(json);
+		}
+		*/
+	</script>
 </body>
 
 </html>
