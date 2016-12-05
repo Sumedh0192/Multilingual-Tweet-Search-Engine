@@ -48,13 +48,13 @@
             <div class="collapse navbar-collapse textcolor" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/index.html">Home</a>
+                        <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/HTMLPages/index.html">Home</a>
                     </li>
                     <li>
-                        <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/about.html">About</a>
+                        <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/HTMLPages/about.html">About</a>
                     </li>
                     <li>
-                        <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/contact.html">Contact</a>
+                        <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/HTMLPages/contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -73,10 +73,17 @@
                         <h1>
 							Tweet Engine
 							<hr class="small">
-							<input type="text" class="form-control" placeholder="Search" id="name" required="" data-validation-required-message="Please search your Query" aria-invalid="false">
+							<div id="custom-search-input">
+								<div class="input-group col-md-12">
+									<input type="text" class="form-control input-lg queryInput" placeholder="Search">
+									<span class="input-group-btn">
+										<button class="btn btn-info btn-lg searchQuery" type="button" onclick="QuerySolr();">
+											<i class="glyphicon glyphicon-search"></i>
+										</button>
+									</span>
+								</div>
+							</div>
 						</h1>
-                        
-                        <!--<span class="subheading">A Clean Blog Theme by Start Bootstrap</span>-->
                     </div>
                 </div>
             </div>
@@ -86,119 +93,87 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<input type='hidden' id='current_page' />  
+			<input type='hidden' id='show_per_page' /> 
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 tweetSection">
+			<!--
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Ingest tweets on a particular hashtag in multiple languages, search or streaming 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
+				<hr>
                 </div>
-                <hr>
+                
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Determine ways to extract cross-lingual or semantic equivalences and index data as such 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
-                </div>
                 <hr>
+				</div>
+                
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Perform search across languages for a given query 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
+				<hr>
                 </div>
-                <hr>
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             End goal : Serve relevant content to a user irrespective of the language of the tweet 
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
+					<hr>
                 </div>
 				<div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">
+                        <h3 class="post-title">
                             Grading : Relevancy and language spread of served results
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Translated Tweet
                         </h3>
+                        <h2 class="post-subtitle">
+                            Translated Tweet
+                        </h2>
                     </a>
                     <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
+					<hr>
                 </div>
-                <hr>
+			
                 <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">More Matches &rarr;</a>
-                    </li>
-                </ul>
+				
             </div>
+			<div id="page_navigation"></div>
         </div>
     </div>
 
     <hr>
-
-    <!-- Footer -->
-	<!--
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-	-->
+	
     <!-- jQuery -->
     <script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/vendor/jquery/jquery.min.js"></script>
 
+	<script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/vendor/jquery/jquery.js"></script>
+	
     <!-- Bootstrap Core JavaScript -->
     <script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/bootstrap/js/bootstrap.min.js"></script>
 
@@ -209,10 +184,286 @@
     <!-- Theme JavaScript -->
     <script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/js/clean-blog.min.js"></script>
 	
-	<style>
-		.textcolor{
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+	
+	<script>
+
+		//var YandexKey = "trnsl.1.1.20161202T195258Z.b66a27db859001ca.29ae4ad43266bb12aa9a3da07a58643e65ed2199";
+		var YandexKey = "trnsl.1.1.20161203T081915Z.86c4fd219985bc79.b785d244e3f3f50a7579c51b435bb946631cab2f";
+		var YandexEndpoint = "https://translate.yandex.net/api/v1.5/tr.json/";
+		var solrInstance = "http://35.161.141.203:8983/solr/VSM/";
+		var j$ = jQuery.noConflict();
+		var MapDocs = {};
+		var MapDocScores = {};
+		var LanguageTextMap = {};
+		var ajaxTranslationCalls = [];
+		var ajaxSolrCalls = [];
+		
+		function paginateTweets(){
+		
+			console.log("In Pagination");
+			//how much items per page to show  
+			var show_per_page = 5;  
+			//getting the amount of elements inside content div  
+			var number_of_items = $('.tweetList').children().size();  
+			//calculate the number of pages we are going to have  
+			var number_of_pages = Math.ceil(number_of_items/show_per_page);  
+			console.log("number_of_items   " + number_of_items);
+			console.log("number_of_pages   " + number_of_pages);
+			//set the value of our hidden input fields  
+			$('#current_page').val(0);  
+			$('#show_per_page').val(show_per_page);  
+		  
+			//now when we got all we need for the navigation let's make it '  
+		  
+			/* 
+			what are we going to have in the navigation? 
+				- link to previous page 
+				- links to specific pages 
+				- link to next page 
+			*/  
+			var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>';  
+			var current_link = 0;  
+			while(number_of_pages > current_link){  
+				navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';  
+				current_link++;  
+			}  
+			navigation_html += '<a class="next_link" href="javascript:next();">Next</a>';  
+		  
+			$('#page_navigation').html(navigation_html);  
+		  
+			//add active_page class to the first page link  
+			$('#page_navigation .page_link:first').addClass('active_page');  
+		  
+			//hide all the elements inside content div  
+			$('.tweetList').children().css('display', 'none');  
+		  
+			//and show the first n (show_per_page) elements  
+			$('.tweetList').children().slice(0, show_per_page).css('display', 'block');  
+		
+		} 
+		  
+		function previous(){  
+		  
+			new_page = parseInt($('#current_page').val()) - 1;  
+			//if there is an item before the current active link run the function  
+			if($('.active_page').prev('.page_link').length==true){  
+				go_to_page(new_page);  
+			}  
+		  
+		}  
+		  
+		function next(){  
+		
+			new_page = parseInt($('#current_page').val()) + 1;  
+			//if there is an item after the current active link run the function  
+			if($('.active_page').next('.page_link').length==true){  
+				go_to_page(new_page);  
+			}  
+		  
+		}  
+		
+		function go_to_page(page_num){  
+			//get the number of items shown per page  
+			var show_per_page = parseInt($('#show_per_page').val());  
+		  
+			//get the element number where to start the slice from  
+			start_from = page_num * show_per_page;  
+		  
+			//get the element number where to end the slice  
+			end_on = start_from + show_per_page;  
+		  
+			//hide all children elements of content div, get specific items and show them  
+			$('.tweetList').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');  
+		  
+			/*get the page link that has longdesc attribute of the current page and add active_page class to it 
+			and remove that class from previously active page link*/  
+			$('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');  
+		  
+			//update the current page input field  
+			$('#current_page').val(page_num);  
+		} 
+
+		function QuerySolr(){
+			var userInput = j$(".queryInput").val();
+			if(userInput == "" || userInput == undefined){
+				alert("Please input a search query");
+			}else{
+				console.log(userInput);//&bq=fieldA:X^3.0
+				populateTweetDOM(formYandexQuery("",userInput,"detect"),userInput);
+			}
 		}
-	</style>
+		
+		function formYandexQuery(lang,inputText, type){
+			var url = YandexEndpoint + type + "?key=" + YandexKey + "&text=" + inputText;
+			if(type == "translate")
+				url = url + "&lang=" + lang + "&[format=plain]&[options=1]&[callback=getJSON]";
+			else
+				url = url + "&[hint=en,ru,de,es,tr]&[callback=getJSON]";
+			return url;
+		}
+			
+		function getTranslatedText(lang, ele){
+			console.log(ele);
+			j$.when(
+				j$.ajax({
+					url: formYandexQuery(lang, ele.parent().find(".tweetText").html().replace(" ","%20"), "translate"),
+					jsonpCallback : 'getJSON',
+					dataType: "json",
+					type: "GET",
+					async: false,
+					crossDomain: true,
+					error: function (xhr, status) {
+						alert("error");
+					}
+				})).done(function(data) {
+					ele.parent().find(".tweetText").html(data.text);
+				});
+		}
+		
+		function populateTweetDOM(url, userInput){
+			j$.when(
+				j$.ajax({
+					url: url,
+					jsonpCallback : "getLanguageJSON",
+					dataType: "json",
+					type: "GET",
+					async: false,
+					crossDomain: true,
+					error: function (xhr, status) {
+						alert("error");
+					}
+				})
+			).done(function(languageJSON){
+				console.log("Yandex lang:   " + languageJSON.lang);
+				var languages = ["en","de","hi","es"];
+				var language = languageJSON.lang;
+				
+				$.each(languages, function(index,lang){
+					if(language != lang){
+						ajaxTranslationCalls.push($.ajax({
+								url: formYandexQuery(language+"-"+lang, encodeURIComponent(userInput.trim()), "translate"),
+								jsonpCallback : "getJSON",
+								dataType: "json",
+								type: "GET",
+								async: false,
+								crossDomain: true,
+								error: function (xhr, status) {
+									alert("error");
+								}
+							}).done(function(TranslatedJSON){
+								LanguageTextMap[lang] = JSON.stringify(TranslatedJSON.text).trim().substring(2,JSON.stringify(TranslatedJSON.text).trim().length - 2).replace(/ /g,"%20");						
+							})
+						);
+					}else{
+						LanguageTextMap[lang] = userInput.trim().replace(/ /g,"%20");
+					}
+				});
+				
+				j$.when.apply(null, ajaxTranslationCalls).done(function(data) {
+					console.log("###   Translations over LanguageTextMap " + LanguageTextMap.length);
+					console.log(LanguageTextMap);
+					j$.each(LanguageTextMap, function(lang,userInput){
+						var url = solrInstance + "select?df=text_" + lang + "&fl=id,score,date,tweet_text,tweet_lang,text_en,text_es,text_ko,text_tr,text_hi,User_ScreenName,User_url,tweet_url,tweet_date,tweet_loc&indent=on&pf=text_" 
+										+ language +"^2" + "&q=" + userInput + "&qf=text_" + language +"&qs=2&rows=20&tie=0.1&wt=json&json.wrf=?";
+						console.log("Solr url " + url);
+						ajaxSolrCalls.push(j$.ajax({
+								url: url,
+								jsonp: "$jsonp",
+								dataType: "jsonp",
+								type: "GET",
+								crossDomain: true,
+								error: function (xhr, error) {
+									alert("error " + error);
+								}
+							}).done(function(QueryResults){
+								console.log(QueryResults);
+								
+								for(i=0; i < QueryResults.response.docs.length; i++){
+									if(MapDocs[QueryResults.response.docs[i].id] == undefined){
+										MapDocs[QueryResults.response.docs[i].id] = QueryResults.response.docs[i];
+									}else{
+										if(MapDocs[QueryResults.response.docs[i].id].score < QueryResults.response.docs[i].score){
+											MapDocs[QueryResults.response.docs[i].id] = QueryResults.response.docs[i];
+										}
+									}
+									if(MapDocScores[QueryResults.response.docs[i].score] == undefined){
+										var arr = [QueryResults.response.docs[i].id];
+										MapDocScores[QueryResults.response.docs[i].score] = arr;
+									}else{
+										var arr = MapDocScores[QueryResults.response.docs[i].score];
+										arr.push(QueryResults.response.docs[i].id);
+										MapDocScores[QueryResults.response.docs[i].score] = arr;
+									}
+								}
+								
+							})
+						);
+					});
+					console.log("ajaxSolrCalls Size   " + ajaxSolrCalls.length);
+					console.log(ajaxSolrCalls);
+					j$.when.apply(null, ajaxSolrCalls).done(function(data) {
+						console.log("Solr Calls    " + MapDocs.length);
+						console.log(MapDocs);
+						var ScoreArr = [];
+						j$.each(MapDocScores, function(score,docId){
+							ScoreArr.push(score);
+						});
+						ScoreArr.sort(function(a, b){return b-a});
+						console.log(ScoreArr);
+						var htmlString = "";
+						j$.each(ScoreArr, function(index, score){
+							j$.each(MapDocScores[score], function(index, docId){
+								htmlString = htmlString + "<div class='post-preview'>" 
+								+ "<a href='" + MapDocs[docId].tweet_url + "'>"
+								+    "<h4>"
+								+		"<div class='tweetText'>"		
+								+        MapDocs[docId].tweet_text
+								+		"</div>"
+								+    "</h4>"
+								+	"</a>"
+								+	"<select id='Langugage' onchange='getTranslatedText(j$(this).val(),j$(this))' class='LanguagePicker'>"
+								+		"<option value='en'>English</option>"
+								+		"<option value='es'>Spanish</option>"
+								+		"<option value='hi'>Hindi</option>"
+								+		"<option value='de'>German</option>"
+								+		"<option value='ko'>Korean</option>"
+								+	"</select>"
+								+ "<p class='post-meta'>by <a href='" + MapDocs[docId].User_url +"'>" + MapDocs[docId].User_ScreenName + "</a> on " + MapDocs[docId].tweet_date + "</p>"
+								+ "<hr>"
+								+ "<input type='hidden' class='originalTweetLang' value='" + MapDocs[docId].tweet_lang + "'/> "
+								+ "</div>";
+							});
+						});
+						if(htmlString != ""){
+							//console.log(htmlString);
+							htmlString = "<div class='tweetList'>" + htmlString + "</div>";
+							j$(".tweetSection").html("<h3>Related Tweets</h3><hr/>" + htmlString);
+						}else{
+							j$(".tweetSection").html("<h4>No Tweets Available</h4><hr/>");
+						}
+						defaultLanguagePicker();
+						paginateTweets();
+					});
+				});
+			});
+		}
+		
+		function defaultLanguagePicker(){
+		
+			j$.each(j$(".LanguagePicker"), function(index, selectDOM){
+				j$(selectDOM).val(j$(selectDOM).parent().find(".originalTweetLang").val());
+			});
+			
+		}
+		
+		function getSolrURL(lang, InputText){
+			var url = solrInstance + "select?df=text_" + lang + "&fl=id,score,date,text_en,text_ru,text_es,text_tr,text_de&indent=on&bq=lang:" 
+										+ lang +"^3.0" + "&q=" + InputText + "&wt=json&json.wrf=callback=getJSON";
+			return url;
+		}
+
+	</script>
 </body>
 
 </html>
