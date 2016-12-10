@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tweet Engine</title>
+    <title>WhySoCurious..</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,16 +19,9 @@
 
     <!-- Custom Fonts -->
     <link href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+	
+	
+	
 </head>
 
 <body>
@@ -48,7 +41,7 @@
             <div class="collapse navbar-collapse textcolor" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/HTMLPages/index.html">Home</a>
+                        <a href="http://54.202.235.49/">Home</a>
                     </li>
                     <li>
                         <a href="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/HTMLPages/about.html">About</a>
@@ -67,27 +60,63 @@
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('https://www.blueclaw.co.uk/wp-content/uploads/2014/03/multilingua2.jpg')">
         <div class="container">
+			<div class="se-pre-con"></div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading textcolor">
                         <h1>
-							Tweet Engine
+							WhySoCurious..
 							<hr class="small">
 							<div id="custom-search-input">
 								<div class="input-group col-md-12">
-									<input type="text" class="form-control input-lg" placeholder="Search">
+									<input type="text" class="form-control input-lg queryInput" placeholder="Search">
 									<span class="input-group-btn">
-										<button class="btn btn-info btn-lg" type="button">
+										<button class="btn btn-info btn-lg searchQuery" type="button" onclick="QuerySolr();">
 											<i class="glyphicon glyphicon-search"></i>
 										</button>
 									</span>
 								</div>
 							</div>
-							<!-- <input type="text" class="form-control" placeholder="Search" id="name" required="" data-validation-required-message="Please search your Query" aria-invalid="false">
-							-->
+							<a style="font-size:20%; color:white; float:right; text-decoration:underline;" onclick="showModal();">Relevance Search</a>
 						</h1>
-                        
-                        <!--<span class="subheading">A Clean Blog Theme by Start Bootstrap</span>-->
+						<div class="modal fade" tabindex="-1" role="dialog" id="RelevanceSearch">
+							<div class="modal-dialog modal-sm" role="document">
+								<div class="modal-content">
+									<div class="modal-header" style="background-color: silver;">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title">Select Languages for relevance</h4>
+									</div>
+									<div class="modal-body" style="background-color: white;">
+										<div class="container">
+											<div class="row">
+												<div class="col-sm-4" style="color:black;">
+													
+												</div>
+											</div>
+											<div class="row" style="padding-right:7%">
+												<div class="col-sm-3">
+													<ul class="list-group">
+														<li class="list-group-item relevanceOptions"><input id="en_relevance" class="LangRelevance" type="hidden" value="notselected">English<span class="glyphicon glyphicon-ok relevanceTick" style="float:right; display:none;"/>
+														</li>
+														<li class="list-group-item relevanceOptions"><input id="hi_relevance" class="LangRelevance" type="hidden" value="notselected">Hindi<span class="glyphicon glyphicon-ok relevanceTick" style="float:right; display:none;"/>
+														</li>
+														<li class="list-group-item relevanceOptions"><input id="de_relevance" class="LangRelevance" type="hidden" value="notselected">German<span class="glyphicon glyphicon-ok relevanceTick" style="float:right; display:none;"/>
+														</li>
+														<li class="list-group-item relevanceOptions"><input id="ru_relevance" class="LangRelevance" type="hidden" value="notselected">Russian<span class="glyphicon glyphicon-ok relevanceTick" style="float:right; display:none;"/>
+														</li>
+														<li class="list-group-item relevanceOptions"><input id="tr_relevance" class="LangRelevance" type="hidden" value="notselected">Turkish<span class="glyphicon glyphicon-ok relevanceTick" style="float:right; display:none;"/>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
                     </div>
                 </div>
             </div>
@@ -95,119 +124,176 @@
     </header>
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="MainContent">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h3 class="post-title">
-                            Ingest tweets on a particular hashtag in multiple languages, search or streaming 
-                        </h3>
-                        <h2 class="post-subtitle">
-                            Translated Tweet
-                        </h2>
-                    </a>
-                    <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
-                </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h3 class="post-title">
-                            Determine ways to extract cross-lingual or semantic equivalences and index data as such 
-                        </h3>
-                        <h2 class="post-subtitle">
-                            Translated Tweet
-                        </h2>
-                    </a>
-                    <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
-                </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h3 class="post-title">
-                            Perform search across languages for a given query 
-                        </h3>
-                        <h2 class="post-subtitle">
-                            Translated Tweet
-                        </h2>
-                    </a>
-                    <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
-                </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h3 class="post-title">
-                            End goal : Serve relevant content to a user irrespective of the language of the tweet 
-                        </h3>
-                        <h2 class="post-subtitle">
-                            Translated Tweet
-                        </h2>
-                    </a>
-                    <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
-                </div>
-				<div class="post-preview">
-                    <a href="post.html">
-                        <h3 class="post-title">
-                            Grading : Relevancy and language spread of served results
-                        </h3>
-                        <h2 class="post-subtitle">
-                            Translated Tweet
-                        </h2>
-                    </a>
-                    <p class="post-meta">by User <a href="#">Tweet Link</a> on Date</p>
-                </div>
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#" onclick="httpGet('http://54.191.219.232:8983/solr/train_demo/select?df=text_en&fl=id,%20score&indent=on&q=Syria&wt=json&json.wrf=callback=getJSON');">More Matches &rarr;</a>
-                    </li>
-                </ul>
+			<input type='hidden' id='current_page' />  
+			<input type='hidden' id='show_per_page' /> 
+			<div class="col-lg-3 col-md-3">
+				<div class="side-menu" id="SideBar">	
+					<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px !important;">
+
+						<!-- Main Menu -->
+						<div class="side-menu-container">
+
+							<ul class="nav navbar-nav" style="float: none !important; font-size:16px;">
+							
+								<li class="panel panel-default" id="dropdown">
+									<a data-toggle="collapse" href="#dropdown-lvl1_1" class="collapsed">
+										<span class="glyphicon glyphicon-filter"></span> Filter Tweets <span class="caret"></span>
+									</a>
+
+									<div id="dropdown-lvl1_1" class="panel-collapse collapse" style="height: 0px;">
+										<div class="panel-body">
+											<ul class="nav navbar-nav">
+												<li class="panel panel-default" id="dropdown">
+													<a data-toggle="collapse" href="#dropdown-lvl2_1">
+														<span class="glyphicon glyphicon-font"></span> Language <span class="glyphicon glyphicon-ok FilterElement " id="languageFilter" style="float:right; display:none;"/> <span id="LanguageFilerCaret" class="caret"></span>
+													</a>
+													<div id="dropdown-lvl2_1" class="panel-collapse collapse">
+														<div class="panel-body">
+															<ul class="nav navbar-nav FilterLang">
+																<li><a onclick="toggleLanguageFilter($(this));" title="hide"><input type="hidden" value="en"/>English<span class="glyphicon glyphicon-ok FilterElement  FilterLanguageOption" id="en_LanguageFilter" style="float:right; display:none;"/></a></li>
+																<li><a onclick="toggleLanguageFilter($(this));" title="hide"><input type="hidden" value="hi"/>Hindi<span class="glyphicon glyphicon-ok FilterElement  FilterLanguageOption" id="hi_LanguageFilter" style="float:right; display:none;"/></a></li>
+																<li><a onclick="toggleLanguageFilter($(this));" title="hide"><input type="hidden" value="de"/>German<span class="glyphicon glyphicon-ok FilterElement  FilterLanguageOption" id="de_LanguageFilter" style="float:right; display:none;"/></a></li>
+																<li><a onclick="toggleLanguageFilter($(this));" title="hide"><input type="hidden" value="ru"/>Russian<span class="glyphicon glyphicon-ok FilterElement  FilterLanguageOption" id="ru_LanguageFilter" style="float:right; display:none;"/></a></li>
+																<li><a onclick="toggleLanguageFilter($(this));" title="hide"><input type="hidden" value="tr"/>Turkish<span class="glyphicon glyphicon-ok FilterElement  FilterLanguageOption" id="tr_LanguageFilter" style="float:right; display:none;"/></a></li>
+															</ul>
+														</div>
+													</div>
+												</li>
+												<li>
+													<a data-toggle="collapse" href="#dropdown-lvl2_2">
+														<span class="glyphicon glyphicon-calendar"></span> Date <span class="glyphicon glyphicon-ok FilterElement " id="dateFilter" style="float:right; display:none;"/></spa`n>
+													</a>
+													<div id="dropdown-lvl2_2" class="panel-collapse collapse">
+														<div class="panel-body">
+															<ul class="nav navbar-nav">
+																<li><div style="margin:1%"><b>From: </b><input style="float:right; margin-right:10%" type="date" id="FromDate"></div></li>
+																<li><div style="margin:1%"><b>To:   </b><input style="float:right; margin-right:10%" type="date" id="ToDate"></div></li>
+															</ul>
+														</div>
+													</div>
+												</li>
+												<li>
+													<a data-toggle="collapse" href="#dropdown-lvl2_3" >
+														<span class="glyphicon glyphicon-map-marker"></span> Location <span class="glyphicon glyphicon-ok FilterElement " id="LocationFilter" style="float:right; display:none;"/></spa`n>
+													</a>
+													<div id="dropdown-lvl2_3" class="panel-collapse collapse" style="font-size:90%">
+														<div class="panel-body">
+															<ul class="nav navbar-nav LocationList">
+																
+															</ul>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>								
+								<li class="panel panel-default" id="dropdown">
+									<a data-toggle="collapse" href="#dropdown-lvl1_2" class="collapsed">
+										<span class="glyphicon glyphicon-sort"></span> Sort Tweets <span class="caret"></span>
+									</a>
+									
+									<div id="dropdown-lvl1_2" class="panel-collapse collapse" style="height: 0px;">
+										<div class="panel-body">
+											<ul class="nav navbar-nav">
+												<!--
+												<li class="panel panel-default" id="dropdown">
+													<a data-toggle="collapse" href="#dropdown-lvl2_2">
+														<span class="glyphicon glyphicon-font"></span> Language <span class="caret"></span>
+													</a>
+													<div id="dropdown-lvl2_2" class="panel-collapse collapse">
+														<div class="panel-body">
+															<ul class="nav navbar-nav">
+																<li><a href="#">English</a></li>
+																<li><a href="#">Hindi</a></li>
+																<li><a href="#">German</a></li>
+																<li><a href="#">Russian</a></li>
+																<li><a href="#">Turkish</a></li>
+															</ul>
+														</div>
+													</div>
+												</li>
+												-->
+												<li class="panel panel-default DateSection" id="dropdown">
+													
+													<a data-toggle="collapse" onclick="dateSortToggle(j$(this));">
+														<span class="glyphicon glyphicon-ok FilterElement  dateOk" style="display:none">
+														</span>
+														<span class="glyphicon glyphicon-calendar sortDate">
+														</span> Date 
+														<span>
+															<span style="display:none" class="glyphicon glyphicon-arrow-up dateSortUpArrow FilterElement">
+															</span>
+															<span style="display:none" class="glyphicon glyphicon-arrow-down dateSortDownArrow FilterElement">
+															</span>
+														</span>
+														<span class="glyphicon glyphicon-ok FilterElement dateCheckbox" style="float:right; display:none;"/>
+													</a>
+												</li>
+												<li>
+													<a data-toggle="collapse" id="popularitySort" onclick="popularityToggle();">
+														<span class="glyphicon glyphicon-sunglasses">
+														</span> Popularity 
+														<span class="glyphicon glyphicon-ok FilterElement" id="popularityCheckbox" style="float:right; display:none;"/>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								
+								</li>
+							</ul> 
+							
+						</div><!-- /.navbar-collapse -->
+						<button type="button" class="btn btn-primary" style="margin-top:2%;margin-left:15%;margin-bottom:2%;text;background-color:#6e8598;font-weight:600;font-size:12px" onclick="GetQueryResultsSolr();">Apply</button>
+						<button type="button" class="btn btn-primary" style="margin-top:2%;margin-left:5%;margin-bottom:2%;text;background-color:#6e8598;font-weight:600;font-size:12px" onclick="clearAllFilters();">Clear all</button>
+					</nav>    
+				</div>
+			</div>
+            <div class="col-lg-6 col-md-6 tweetSection">		
             </div>
+			<div class="col-lg-3 col-md-3 ChartSection">
+				<span class="badge" id="TweetCount" style="font-size:20px"> </span>
+				<div class="cliente"> 
+				<a onclick="openPieModal();">
+					<div id="piechart" style="width: 100%; height: 100%;"></div>
+				</a>
+				</div>
+				
+				<div class="cliente"> 
+				<a onclick="openMapModal();">
+					<div id="mapChart" style="width: 100%; height: 100%;"></div>
+				</a>
+				</div>
+				
+			</div>
+			<div class="modal fade" tabindex="-1" role="dialog" id="pieChartModal">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-body" style="background-color: grey;">
+							<div id="modalPiechart" style="width: 100%; height: 100%;"></div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div>
+			<div class="modal fade" tabindex="-1" role="dialog" id="mapChartModal">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-body" style="background-color: grey;">
+							<div id="modalMapchart" style="width: 100%; height: 100%;"></div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div>
+			<div id="page_navigation"></div>
         </div>
     </div>
 
     <hr>
-
-    <!-- Footer -->
-	<!--
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-	-->
-    <!-- jQuery -->
+	
+	<!-- jQuery -->
     <script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/vendor/jquery/jquery.min.js"></script>
 
 	<script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/vendor/jquery/jquery.js"></script>
@@ -222,106 +308,805 @@
     <!-- Theme JavaScript -->
     <script src="https://rawgit.com/Sumedh0192/MultilingualInfoRetrieval/master/js/clean-blog.min.js"></script>
 	
+	<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	
+     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	
 	<style>
-		.textcolor{
+	
+	.no-js #loader { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+	.se-pre-con {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url(https://rawgit.com/Sumedh0192/Sumedh0192.github.io/master/img/Preloader_3.gif) center no-repeat #fff;
+	}
+		
+	a{
+		cursor:pointer;
+	}
+	
+	.intro-header {
+		margin-bottom: 20px;
+	}
+	
+	.list-group-item{
+		background-color:white;
+		color:black;
+	}
+	
+	.paginationWrapper > a{
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			border: 1px solid #ddd;
+			font-size: 15px;
+			margin: 0 2px;
+			font-weight: 400;
 		}
+
+		.paginationWrapper{
+			margin: 0 auto;
+			font-size: 17px;
+			position: relative;
+		}
+	
+	.side-menu {
+		width: 300px;
+		height: 100%;
+		background-color: #f8f8f8;
+		border-right: 1px solid #e7e7e7;
+	}
+	.side-menu .navbar {
+		border: none;
+	}
+	.side-menu .navbar-header {
+		width: 100%;
+		border-bottom: 1px solid #e7e7e7;
+	}
+	.side-menu .navbar-nav .active a {
+		background-color: transparent;
+		margin-right: -1px;
+		border-right: 5px solid #e7e7e7;
+	}
+	.side-menu .navbar-nav li {
+		display: block;
+		width: 100%;
+		border-bottom: 1px solid #e7e7e7;
+	}
+	.side-menu .navbar-nav li a {
+		padding: 15px;
+	}
+	.side-menu .navbar-nav li a .glyphicon {
+		padding-right: 10px;
+	}
+	.side-menu #dropdown {
+		border: 0;
+		margin-bottom: 0;
+		border-radius: 0;
+		background-color: transparent;
+		box-shadow: none;
+	}
+	.side-menu #dropdown .caret {
+		float: right;
+		margin: 9px 5px 0;
+	}
+	.side-menu #dropdown .indicator {
+		float: right;
+	}
+	.side-menu #dropdown &gt; a {
+		border-bottom: 1px solid #e7e7e7;
+	}
+	.side-menu #dropdown .panel-body {
+		padding: 0;
+		background-color: #f3f3f3;
+	}
+	.side-menu #dropdown .panel-body .navbar-nav {
+		width: 100%;
+	}
+	.side-menu #dropdown .panel-body .navbar-nav li {
+		padding-left: 15px;
+		border-bottom: 1px solid #e7e7e7;
+	}
+	.side-menu #dropdown .panel-body .navbar-nav li:last-child {
+		border-bottom: none;
+	}
+	.side-menu #dropdown .panel-body .panel &gt; a {
+		margin-left: -20px;
+		padding-left: 35px;
+	}
+	.side-menu #dropdown .panel-body .panel-body {
+		margin-left: -15px;
+	}
+	.side-menu #dropdown .panel-body .panel-body li {
+		padding-left: 30px;
+	}
+	.side-menu #dropdown .panel-body .panel-body li:last-child {
+		border-bottom: 1px solid #e7e7e7;
+	}
+	.side-menu #search-trigger {
+		background-color: #f3f3f3;
+		border: 0;
+		border-radius: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 15px 18px;
+	}
+	.side-menu .brand-name-wrapper {
+		min-height: 50px;
+	}
+	.side-menu .brand-name-wrapper .navbar-brand {
+		display: block;
+	}
+	.side-menu #search {
+		position: relative;
+		z-index: 1000;
+	}
+	.side-menu #search .panel-body {
+		padding: 0;
+	}
+	.side-menu #search .panel-body .navbar-form {
+		padding: 0;
+		padding-right: 50px;
+		width: 100%;
+		margin: 0;
+		position: relative;
+		border-top: 1px solid #e7e7e7;
+	}
+	.side-menu #search .panel-body .navbar-form .form-group {
+		width: 100%;
+		position: relative;
+	}
+	.side-menu #search .panel-body .navbar-form input {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		width: 100%;
+		height: 50px;
+	}
+	.side-menu #search .panel-body .navbar-form .btn {
+		position: absolute;
+		right: 0;
+		top: 0;
+		border: 0;
+		border-radius: 0;
+		background-color: #f3f3f3;
+		padding: 15px 18px;
+	}
+	
+	
+	
+	@media (max-width: 768px) {
+		
+		.side-menu {
+			position: relative;
+			width: 100%;
+			height: 0;
+			border-right: 0;
+			border-bottom: 1px solid #e7e7e7;
+		}
+		
+		.side-menu .brand-name-wrapper .navbar-brand {
+			display: inline-block;
+		}
+		
+		.side-menu-container &gt; .navbar-nav.slide-in {
+			-moz-animation: slidein 300ms forwards;
+			-o-animation: slidein 300ms forwards;
+			-webkit-animation: slidein 300ms forwards;
+			animation: slidein 300ms forwards;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+		}
+		  
+		.side-menu-container &gt; .navbar-nav {
+			/* Add position:absolute for scrollable menu -&gt; see top comment */
+			position: fixed;
+			left: -300px;
+			width: 300px;
+			top: 43px;
+			height: 100%;
+			border-right: 1px solid #e7e7e7;
+			background-color: #f8f8f8;
+			-moz-animation: slideout 300ms forwards;
+			-o-animation: slideout 300ms forwards;
+			-webkit-animation: slideout 300ms forwards;
+			animation: slideout 300ms forwards;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+		}
+	}
 	</style>
-	<script>
+	
+	
+	<script type="text/javascript">
+
+		//var YandexKey = "trnsl.1.1.20161202T195258Z.b66a27db859001ca.29ae4ad43266bb12aa9a3da07a58643e65ed2199";
+		var YandexKey = "trnsl.1.1.20161203T081915Z.86c4fd219985bc79.b785d244e3f3f50a7579c51b435bb946631cab2f";
+		var YandexEndpoint = "https://translate.yandex.net/api/v1.5/tr.json/";
+		var solrInstance = "http://35.161.141.203:8983/solr/VSM/";
+		var ajaxTranslationCalls = [];
+		var ajaxSolrCalls = [];
+		var MapDocs = {};
+		var LanguageTextMap = {};
+		var LocationTweetMap = {};
+		var LanguageTweetCountMap = {};
+		var CountLocationSortedMap = {};
+		var TopLocation = [];
+		var languageMapper = {"en":"English","hi":"Hindi","de":"German","ru":"Russian","tr":"Turkish"};
+		var mostRelevantLang = "";
+		var maxTweets = 0;
+		var allLocations = 0;
 		var j$ = jQuery.noConflict();
-		function httpGet(url){
-			$.ajax({
-				url: url,
-				jsonpCallback : 'getJSON',
+		
+		$(document).ready(function(){
+			j$("#SideBar").hide();
+			j$(".se-pre-con").hide();
+			j$("#TweetCount").hide();
+		});
+		
+		
+		
+		j$('.queryInput').keypress(function(e) { 
+			if(e.which == 13) { 
+				QuerySolr();
+			} 
+		});
+		
+		function showModal(){
+			j$('#RelevanceSearch').modal('show');
+		}
+		function openPieModal(){
+			j$('#pieChartModal').modal('show');
+		}
+		
+		j$("#FromDate, #ToDate").change(function(){
+			if(j$("#FromDate").val() != "" && j$("#ToDate").val() != "" ){
+				j$("#dateFilter").show();
+			}else{
+				j$("#dateFilter").hide();
+			}
+		});
+		
+		function clearAllFilters(){
+			j$(".FilterElement").hide();
+		}
+		
+		function locationToggle(ele){
+			if(j$(ele).find(".LocationElement").is(":visible") == true){
+				j$(ele).find(".LocationElement").hide();
+			}else{
+				j$(ele).find(".LocationElement").show();
+			}
+			if(j$(".LocationElement").is(":visible") == true){
+				j$("#LocationFilter").show();
+			}else{
+				j$("#LocationFilter").hide();
+			}
+		}
+		
+		function popularityToggle(){
+			console.log(j$("#popularityCheckbox"));
+			
+			if(j$("#popularityCheckbox").is(":visible") == true){
+				j$("#popularityCheckbox").hide();
+			}else{
+				j$("#popularityCheckbox").show();
+			}
+		}
+		
+		j$(".relevanceOptions").click(function(){
+			if(j$(this).find(".relevanceTick").is(":visible") == true){
+				j$(this).css("background-color:white");
+				j$(this).find(".relevanceTick").hide();
+				j$(this).find(".LangRelevance").val("notselected");
+			}else if(j$(this).find(".relevanceTick").is(":visible") == false){
+				j$(this).css("background-color:silver");
+				j$(this).find(".relevanceTick").show();
+				j$(this).find(".LangRelevance").val("selected");
+			}
+		});
+		
+		function checkSort(){
+		
+			if(j$(".dateOk").is("visible") == true){
+				j$(".dateOk").hide();
+			}else{
+				j$(".dateOk").show();
+			}
+			
+		}
+			
+		function dateSortToggle(ele){
+			if(j$(".dateSortUpArrow").is(":visible") == false && j$(".dateSortDownArrow").is(":visible") == false){
+				j$(".dateSortUpArrow").show();
+				j$(".dateCheckbox").show();
+			}else if(j$(".dateSortUpArrow").is(":visible") == true && j$(".dateSortDownArrow").is(":visible") == true){
+				j$(".dateSortUpArrow").hide();
+				j$(".dateSortDownArrow").hide();
+			}else if(j$(".dateSortUpArrow").is(":visible") == true){
+				j$(".dateSortUpArrow").hide();
+				j$(".dateSortDownArrow").show();
+			}else{
+				console.log("");
+				j$(".dateSortDownArrow").hide();
+				j$(".dateSortUpArrow").show();
+			}
+		}
+		
+		function paginateTweets(){
+		
+			console.log("In Pagination");
+			//how much items per page to show  
+			var show_per_page = 10;  
+			//getting the amount of elements inside content div  
+			var number_of_items = $('.tweetList').children().size();  
+			//calculate the number of pages we are going to have  
+			var number_of_pages = Math.ceil(number_of_items/show_per_page);  
+			console.log("number_of_items   " + number_of_items);
+			console.log("number_of_pages   " + number_of_pages);
+			//set the value of our hidden input fields  
+			$('#current_page').val(0);  
+			$('#show_per_page').val(show_per_page);  
+		  
+			//now when we got all we need for the navigation let's make it '  
+		  
+			/* 
+			what are we going to have in the navigation? 
+				- link to previous page 
+				- links to specific pages 
+				- link to next page 
+			*/  
+			var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>';  
+			var current_link = 0;  
+			
+			while(number_of_pages > current_link){  
+				navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';  
+				current_link++;  
+			}  
+			
+			navigation_html += '<a class="next_link" href="javascript:next();">Next</a>';  
+		  
+			$('#page_navigation').html(navigation_html);  
+		  
+			//add active_page class to the first page link  
+			$('#page_navigation .page_link:first').addClass('active_page');  
+		  
+			//hide all the elements inside content div  
+			$('.tweetList').children().css('display', 'none');  
+		  
+			//and show the first n (show_per_page) elements  
+			$('.tweetList').children().slice(0, show_per_page).css('display', 'block');  
+			$(".page_link").hide();
+		} 
+		  
+		function previous(){  
+		  
+			new_page = parseInt($('#current_page').val()) - 1;  
+			//if there is an item before the current active link run the function  
+			if($('.active_page').prev('.page_link').length==true){  
+				go_to_page(new_page);  
+			}  
+		  
+		}  
+		  
+		function next(){  
+		
+			new_page = parseInt($('#current_page').val()) + 1;  
+			//if there is an item after the current active link run the function  
+			if($('.active_page').next('.page_link').length==true){  
+				go_to_page(new_page);  
+			}  
+		  
+		}  
+		
+		function go_to_page(page_num){  
+			//get the number of items shown per page  
+			var show_per_page = parseInt($('#show_per_page').val());  
+		  
+			//get the element number where to start the slice from  
+			start_from = page_num * show_per_page;  
+		  
+			//get the element number where to end the slice  
+			end_on = start_from + show_per_page;  
+		  
+			//hide all children elements of content div, get specific items and show them  
+			$('.tweetList').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');  
+		  
+			/*get the page link that has longdesc attribute of the current page and add active_page class to it 
+			and remove that class from previously active page link*/  
+			$('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');  
+		  
+			//update the current page input field  
+			$('#current_page').val(page_num);  
+			$(".page_link").hide();
+		} 
+
+		function QuerySolr(){
+			var userInput = j$(".queryInput").val();
+			if(userInput == "" || userInput == undefined){
+				alert("Please input a search query");
+			}else{
+				console.log(userInput);//&bq=fieldA:X^3.0
+				populateTweetDOM(formYandexQuery("",userInput,"detect"),userInput);
+			}
+		}
+		
+		function formYandexQuery(lang,inputText, type){
+			var url = YandexEndpoint + type + "?key=" + YandexKey + "&text=" + encodeURIComponent(inputText);
+			if(type == "translate")
+				url = url + "&lang=" + lang + "&[format=plain]&[options=1]&[callback=getJSON]";
+			else
+				url = url + "&[hint=en,ru,de,es,tr]&[callback=getJSON]";
+			console.log("Yandex url " + url);
+			return url;
+		}
+			
+		function getTranslatedText(lang, ele){
+			console.log(ele);
+			j$.when(
+				j$.ajax({
+					url: formYandexQuery(lang, ele.parent().find(".originalTweetText").val(), "translate"),
+					jsonpCallback : 'getJSON',
+					dataType: "json",
+					type: "GET",
+					async: false,
+					crossDomain: true,
+					error: function (xhr, status) {
+						alert("error");
+					}
+				})).done(function(data) {
+					ele.parent().find(".tweetText").html(data.text);
+				});
+		}
+		
+		function populateTweetDOM(url, userInput){
+			j$(".se-pre-con").show();
+			j$.when(
+				j$.ajax({
+					url: url,
+					jsonpCallback : "getLanguageJSON",
+					dataType: "json",
+					type: "GET",
+					async: false,
+					crossDomain: true,
+					error: function (xhr, status) {
+						alert("error");
+					}
+				})
+			).done(function(languageJSON){
+				console.log("Yandex lang:   " + languageJSON.lang);
+				var languages = ["en","de","hi","ru","tr"];
+				var language = languageJSON.lang;
+				
+				$.each(languages, function(index,lang){
+					if(language != lang){
+						ajaxTranslationCalls.push($.ajax({
+								url: formYandexQuery(language+"-"+lang,userInput.trim(), "translate"),
+								jsonpCallback : "getJSON",
+								dataType: "json",
+								type: "GET",
+								async: false,
+								crossDomain: true,
+								error: function (xhr, status) {
+									alert("error");
+								}
+							}).done(function(TranslatedJSON){
+								LanguageTextMap[lang] = JSON.stringify(TranslatedJSON.text).trim().substring(2,JSON.stringify(TranslatedJSON.text).trim().length - 2).replace(/ /g,"%20");						
+							})
+						);
+					}else{
+						LanguageTextMap[lang] = userInput.trim().replace(/ /g,"%20");
+					}
+				});
+				
+				j$.when.apply(null, ajaxTranslationCalls).done(function(data) {
+					GetQueryResultsSolr();
+				});
+			});
+			j$(".se-pre-con").hide();
+		}
+		
+		function GetQueryResultsSolr(){
+			
+			console.log("***********************************************************SHOW");
+			j$.ajax({
+				url: getSolrURL(),
 				jsonp: "$jsonp",
 				dataType: "jsonp",
 				type: "GET",
 				crossDomain: true,
-				error: function (xhr, status) {
-					alert("error");
+				error: function (xhr, error) {
+					alert("error " + error);
 				}
-			}).done(function(data) {
-				console.log("Request received: " + data.response.docs[0].id);
+			}).done(function(QueryResults){
+				j$("#SideBar").show();
+				MapDocs = {};
+				LocationTweetMap = {};
+				LanguageTweetCountMap = {};
+				CountLocationSortedMap = {};
+				TopLocation = [];
+				var htmlString = "";
+				mostRelevantLang = "";
+				maxTweets = 0;
+				j$(".tweetSection").html(htmlString);
+				j$("#TweetCount").show();
+				j$("#TweetCount").html("Total Tweets: " + QueryResults.response.docs.length);
+				for(i=0; i < QueryResults.response.docs.length; i++){
+					MapDocs[QueryResults.response.docs[i].id] = QueryResults.response.docs[i];
+					if(LanguageTweetCountMap[QueryResults.response.docs[i].tweet_lang] == undefined){
+						LanguageTweetCountMap[QueryResults.response.docs[i].tweet_lang] = 1;
+					}else{
+						LanguageTweetCountMap[QueryResults.response.docs[i].tweet_lang] = LanguageTweetCountMap[QueryResults.response.docs[i].tweet_lang] + 1;
+					}
+					if(LanguageTweetCountMap[QueryResults.response.docs[i].tweet_lang] > maxTweets){
+						maxTweets = LanguageTweetCountMap[QueryResults.response.docs[i].tweet_lang];
+						mostRelevantLang = QueryResults.response.docs[i].tweet_lang;
+					}
+					if(QueryResults.response.docs[i].user_loc != ""){
+						if(LocationTweetMap[QueryResults.response.docs[i].user_loc] == undefined){
+							LocationTweetMap[QueryResults.response.docs[i].user_loc] = 1;
+						}else{
+							LocationTweetMap[QueryResults.response.docs[i].user_loc] = LocationTweetMap[QueryResults.response.docs[i].user_loc] + 1;
+						}	
+					}
+					htmlString = htmlString + "<div class='post-preview'>" 
+					+ "<a target='_blank' href='" + QueryResults.response.docs[i].tweet_url + "'>"
+					+    "<h4>"
+					+		"<div class='tweetText'>"		
+					+        QueryResults.response.docs[i].tweet_text
+					+		"</div>"
+					+    "</h4>"
+					+	"</a>"
+					+	"<select id='Langugage' onchange='getTranslatedText(j$(this).val(),j$(this))' class='LanguagePicker'>"
+					+		"<option value='en'>English</option>"
+					+		"<option value='hi'>Hindi</option>"
+					+		"<option value='de'>German</option>"
+					+		"<option value='ru'>Russian</option>"
+					+		"<option value='tr'>Turkish</option>"
+					+	"</select>"
+					+	"<div>"
+					//+	"<img src='" + QueryResults.response.docs[i].tweet_image +"'/>";
+					+	"</div>"
+					+ "<p class='post-meta'>by <a target='_blank' href='" + QueryResults.response.docs[i].User_url +"'>" + QueryResults.response.docs[i].User_ScreenName + "</a> on " + QueryResults.response.docs[i].tweet_date.substring(0,10) + " <span class='badge'> Retweets: " + QueryResults.response.docs[i].retweet_count +"</span>  </p>"
+					+ "<hr>"
+					+ "<input class='originalTweetText' value='" + QueryResults.response.docs[i].tweet_text + "' type='hidden'/>"
+					+ "<input type='hidden' class='originalTweetLang' value='" + QueryResults.response.docs[i].tweet_lang + "'/> "
+					+ "</div>";
+				}
+				
+				if(htmlString != ""){
+					//console.log(htmlString);
+					htmlString = "<div class='tweetList'>" + htmlString + "</div>";
+					var mostRelevant = false;
+					var oneSelected = false;
+					j$.each(languageMapper, function(lang, language){
+						if(j$("#" + lang + "_relevance").val() == "selected"){
+							oneSelected = true;
+							if(mostRelevantLang == lang){
+								mostRelevant = true;
+							}
+						}
+					});
+					console.log("********  " + oneSelected);
+					/*if(mostRelevant == false && oneSelected == true){
+						htmlString = "<div style='font-size:70%; color:blue'>This query will return more relevant tweets in " + languageMapper[mostRelevantLang] + "</div><hr/>" + htmlString;
+					}else{
+						htmlString = "<hr/>" + htmlString;
+					}*/
+					j$(".tweetSection").html("<h3 style='display:flex;'>Related Tweets<div class='paginationWrapper' id='page_navigation'></div></h3>" + htmlString);
+				}else{
+					j$(".tweetSection").html("<h4>No Tweets Available</h4><hr/>");
+				}
+				defaultLanguagePicker();
+				paginateTweets();
+				allLocations = 0;
+				j$.each(LocationTweetMap, function(loc, count){
+					allLocations += 1;
+					if(CountLocationSortedMap[count] == undefined){
+						var arr = [loc];
+						CountLocationSortedMap[count] = arr;
+					}else{
+						var arr = CountLocationSortedMap[count];
+						arr.push(loc);
+						CountLocationSortedMap[count] = arr;
+					}
+					if (TopLocation.indexOf(count)==-1) 
+						TopLocation.push(count);
+				});
+				TopLocation.sort(function(a, b){return b-a});
+				var locationsHtml = "";
+				j$(".LocationList").html(locationsHtml);
+				var counter = 0;
+				console.log(TopLocation);
+				console.log(CountLocationSortedMap);
+				j$.each(TopLocation, function(index, count){
+					j$.each(CountLocationSortedMap[count], function(index, location){
+						console.log("location   " + location);
+						if(counter == 10){
+							j$(".LocationList").html(locationsHtml);
+							return false;
+						}
+						locationsHtml += "<li><a onclick='locationToggle(j$(this))'><input type='hidden' class='LocationSelector'  value='" + location + "'/>" +
+										location + " (" + count + ")<span class='glyphicon glyphicon-ok FilterElement LocationElement' style='float:right; display:none;'/></a></li>";
+						counter += 1;
+					});
+				});
+				console.log(LocationTweetMap.length);
+				j$(".LocationList").html(locationsHtml);	
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawPieChart);
+				//google.charts.load('upcoming', { 'packages': ['map'] });
+				//google.charts.setOnLoadCallback(drawMapChart);				
+				//drawPieChart();
 			});
+			$(".se-pre-con").hide();
 		}
-	
-	
-	
-		function xmlhttpPost(strURL) {
-			var xmlHttpReq = false;
-			var self = this;
-			if (window.XMLHttpRequest) { // Mozilla/Safari
-				self.xmlHttpReq = new XMLHttpRequest();
-			}
-			else if (window.ActiveXObject) { // IE
-				self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			self.xmlHttpReq.open('POST', strURL, true);
-			self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			self.xmlHttpReq.onreadystatechange = function() {
-				if (self.xmlHttpReq.readyState == 4) {
-					updatepage(self.xmlHttpReq.responseText);
-				}
-			}
-			/*
-			var params = getstandardargs().concat(getquerystring());
-			var strData = params.join('&');
-			self.xmlHttpReq.send(strData);
-			*/
-		}
+		
+		
+		function drawMapChart() {
 
-		function getstandardargs() {
-			var params = [
-				'wt=json'
-				, 'indent=on'
-				, 'hl=true'
-				, 'hl.fl=name,features'
-				];
-
-			return params;
-		}
-		function getquerystring() {
-			var form = document.forms['f1'];
-			var query = form.query.value;
-			qstr = 'q=' + escape(query);
-			return qstr;
-		}
-
-		// this function does all the work of parsing the solr response and updating the page.
-		function updatepage(str){
-			//document.getElementById("raw").innerHTML = str;
-			var rsp = eval("("+str+")"); // use eval to parse Solr's JSON response
+			var data = new google.visualization.DataTable();
+		    data.addColumn('string', 'Country');
+		    data.addColumn('number', 'Number of Tweets');
+			console.log("LocationTweetMap.length  " + LocationTweetMap);
+			var numberOfRows = Number(LocationTweetMap.length);
+			data.addRows(allLocations);
+			counter = 0;
+			j$.each(LocationTweetMap, function(loc, count){
+				data.setCell(counter, 0, loc);
+				data.setCell(counter, 1, count);
+				counter += 1;
+			});
 			
-			console.log("####" + rsp.response.docs[0]);
-			/*
-			var html= "<br>numFound=" + rsp.response.numFound;
-			var first = rsp.response.docs[0];
-			html += "<br>product name="+ first.name;
-			var hl=rsp.highlighting[first.id];
-			if (hl.name != null) { html += "<br>name highlighted: " + hl.name[0]; }
-			if (hl.features != null) { html += "<br>features highligted: " + hl.features[0]; }
-			document.getElementById("result").innerHTML = html;
-			*/
+			var options = {
+			  showTooltip: true,
+			  showInfoWindow: true
+			};
+
+			var map = new google.visualization.Map(document.getElementById('mapChart'));
+			var Modalmap = new google.visualization.Map(document.getElementById('modalMapchart'));
+			chart.draw(data, options);
+			Modalchart.draw(data, options);
 		}
-		/*
-		function httpGet(url){
-			$.ajax({
-				url: url,
-				type: "POST",
-				crossDomain: true,
-				data: JSON.stringify(somejson),
-				dataType: "jsonnp",
-				success: function (response) {
-					var resp = JSON.parse(response)
-					alert(resp.status);
-				},
-				error: function (xhr, status) {
-					alert("error");
+		
+		
+		function drawPieChart() {
+
+			var data = new google.visualization.DataTable();
+		    data.addColumn('string', 'Language');
+		    data.addColumn('number', 'Number of Tweets');
+			data.addRows(5);
+			var counter = 0;
+			j$.each(LanguageTweetCountMap, function(lang, count){
+				data.setCell(counter, 0, languageMapper[lang]);
+				data.setCell(counter, 1, count);
+				counter += 1;
+			});
+			
+			var options = {
+				title: 'Languge Distribution Of Tweets',
+				pieHole: 0.4,
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+			var Modalchart = new google.visualization.PieChart(document.getElementById('modalPiechart'));
+				chart.draw(data, options);
+				Modalchart.draw(data, options);
+		}
+		
+		function getSolrURL(){
+			var url = solrInstance + "select?fl=id,score,date,tweet_text,tweet_lang,text_en,text_de,text_ru,text_tr,text_hi,User_ScreenName,"
+				+ "User_url,tweet_url,tweet_date,tweet_loc,user_loc,user_pic,tweet_image,retweet_count&indent=on&q=";
+			console.log("IN SOLR URL");
+			console.log(LanguageTextMap);
+			j$.each(LanguageTextMap, function(lang,userInput){
+				if(j$(".FilterLanguageOption").is(":visible") == false || (j$(".FilterLanguageOption").is(":visible") == true && j$("#" + lang + "_LanguageFilter").is(":visible") == true)){
+					url = url + "text_" + lang + ":(" + userInput + ")";
+					if(j$("#" + lang + "_relevance").val() == "selected"){
+						url = url + "^10%20";
+					}else{
+						url = url + "%20";
+					}
+					url = url + "OR%20";
+					url = url + "text_" + lang + ":(\"" + userInput + "\"~3)";
+					if(j$("#" + lang + "_relevance").val() == "selected"){
+						url = url + "^10%20";
+					}else{
+						url = url + "%20";
+					}
+					url = url + "OR%20";
 				}
 			});
-			//var json = j$.getJSON(url);
-			//console.log(json);
+			url = url.substring(0,url.length - 8);
+			
+			if(j$("#dateFilter").is(":visible") == true){
+				var fromDate = j$("#FromDate").val().split("-");
+				var toDate = j$("#ToDate").val().split("-");
+				url = url + "&tweet_date:[" + fromDate[0] + "-" + fromDate[1] + "-" + fromDate[2] + "T00:00:00Z%20TO%20" + toDate[0] + "-" + toDate[1] + "-" + toDate[2] + "T00:00:00Z]";
+			}
+			if(j$("#LocationFilter").is(":visible") == true){
+				url = url + "user_loc:(";
+				j$.each(j$(".LocationElement"), function(index, ele){
+					if(j$(ele).is(":visible") == true){
+						url = url + "\"" + j$(ele).parent().find(".LocationSelector").val() + "\",";
+					}
+				});
+				url = url.substring(0,url.length - 1) + ")";
+			}
+
+			if(j$("#popularityCheckbox").is(":visible") == true || j$(".dateCheckbox").is(":visible") == true){
+				url = url + "&sort=";
+				if(j$(".dateSortUpArrow").is(":visible") == true){
+					url = url + "tweet_date%20ASC";  
+				}else if(j$(".dateSortdownArrow").is(":visible") == true){
+					url = url + "tweet_date%20DESC"; 
+				}
+				if(j$("#popularityCheckbox").is(":visible") == true){
+					if(j$(".dateCheckbox").is(":visible") == true){
+						url = url + ",retweet_count%20DESC";
+					}else{
+						url = url + "retweet_count%20DESC";
+					}
+				}
+			}
+			url = url + "&rows=10000&tie=0.1&wt=json&json.wrf=?"
+			console.log("### URL ---> " + url);
+			return url;
 		}
-		*/
+		
+		
+		function defaultLanguagePicker(){
+		
+			j$.each(j$(".LanguagePicker"), function(index, selectDOM){
+				j$(selectDOM).val(j$(selectDOM).parent().find(".originalTweetLang").val());
+			});
+			
+		}
+
+		function toggleLanguageFilter(ele){
+			if(j$(ele).prop("title") == "hide"){
+				j$(ele).children().show();
+				j$(ele).attr("title","show");
+			}else if(j$(ele).prop("title") == "show"){
+				j$(ele).children().hide();
+				j$(ele).attr("title","hide");
+			}
+			if(j$(".FilterLanguageOption").is(":visible") == true){
+				j$("#languageFilter").show();
+				j$("#LanguageFilerCaret").hide();
+			}else{
+				j$("#languageFilter").hide();
+				j$("#LanguageFilerCaret").show();
+			}
+		}	
+
+		j$(".dateCheckbox").click(function(){
+			console.log("IN CLICK");
+			if(j$(this).is(":visible") == true){
+				j$(".dateSortUpArrow").show();
+				j$(".dateSortDownArrow").show();
+				j$(this).hide();
+			}
+		});
+		
 	</script>
 </body>
 
