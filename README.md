@@ -14,3 +14,6 @@ Creating a platform for searching multi-lingual tweets related to specified topi
 ### Prerequisite:
 * An Apache SOLR setup.
 * Indexed database which can consist of tweets or any other dataset.
+
+### Link to the main Code Files:
+https://github.com/Sumedh0192/Multilingual-Tweet-Search-Engine/tree/master/HTMLPages
